@@ -10,22 +10,29 @@ https://www.rte-france.com/eco2mix/telecharger-les-indicateurs.
 ●   ​ Télécharger les données annuelles de consommation (en puissance) depuis le
 site. Les seules données qui nous intéressent sont la puissance totale
 consommée en France demi-heure par demi-heure.
+
 ●​  Choisir un schéma de base de données relationnelle adapté au stockage de ces
 données, de manière à pouvoir les stocker et les requêter de manière efficace
 dans la suite de l’exercice.
+
     ○​  Écrire une requête SQL qui répond à la question: quelle était la
     consommation moyenne entre le 1er janvier à 6h et le 3 à 17h ?
+
     -> `SELECT AVG(consumption) as AVG_CONS_MW FROM energy WHERE date BETWEEN '01/01/2025 06:00:00' AND '03/01/2025 17:00:00';`
+
 ●​  Insérer les données dans une base de données locale de votre choix selon le
 schéma choisi à l’aide d’un script python.
+
 ●​  Créer une API en python qui contiendra un seul endpoint et permettra de
 requêter les données depuis la base de données créée à l’étape précédente.
 L’API doit prendre en paramètre une date et une heure de début et de fin, et
 retourner au format JSON les données de consommation en Watts entre ces
 deux dates, demi-heure par demi-heure.
+
 ●​  Écrire un Dockerfile et un fichier docker-compose.yaml pour packager
 l’application afin de pouvoir démarrer le projet avec la simple commande docker
 compose up.
+
 ●​  Créer au moins un test du endpoint API
 
 L’objectif est simplement de montrer une maîtrise minimale des technologies de base
@@ -38,7 +45,9 @@ avance, vous pouvez créer une repo Github privé et y inviter @lovasoa, @tibz-e
 
 Si il vous reste du temps, vous pouvez implémenter au choix certains des points
 bonus suivant:
+
 ●​ Déployer l’application et la base de données sur un cluster minikube local
+
 ●​ Implémenter le rafraîchissement automatique régulier des données depuis
 RTE vers votre base de données.
 
