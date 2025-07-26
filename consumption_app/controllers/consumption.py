@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime
-from usecases.get_consumption_between import GetConsumptionBetween
-from infrastructure.repositories.sql_alch_energy_repository import SqlAlchemyEnergyRepository
+from consumption_app.usecases.get_consumption_between import GetConsumptionBetween
+from consumption_app.infrastructure.repositories.sql_alch_energy_repository import SqlAlchemyEnergyRepository
 
 
 consumption_blueprint = Blueprint("consumption", __name__, url_prefix='/consumption')

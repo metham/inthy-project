@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
-from ..models.energy import Energy
-from ..repositories.energy_repository import EnergyRepository
-from ..db import SessionLocal
+from consumption_app.infrastructure.models.energy import Energy
+from consumption_app.infrastructure.repositories.energy_repository import EnergyRepository
+from consumption_app.infrastructure.db import SessionLocal
 
 class SqlAlchemyEnergyRepository(EnergyRepository):
     def __init__(self):

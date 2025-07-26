@@ -48,4 +48,4 @@ def import_csv(filepath: str):
     print(f"{inserted} lignes ajoutées en base.")
 
 if __name__ == "__main__":
-    import_csv("/app/data/data.csv")    
+    import_csv("/consumption_app/data/data.csv")    

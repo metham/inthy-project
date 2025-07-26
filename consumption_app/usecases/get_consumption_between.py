@@ -1,7 +1,7 @@
-from infrastructure.db import SessionLocal
-from infrastructure.models.energy import Energy
+from consumption_app.infrastructure.db import SessionLocal
+from consumption_app.infrastructure.models.energy import Energy
 from datetime import datetime
-from infrastructure.repositories.energy_repository import EnergyRepository
+from consumption_app.infrastructure.repositories.energy_repository import EnergyRepository
 
 class GetConsumptionBetween:
     def __init__(self, repository: EnergyRepository):
@@ -15,7 +15,7 @@ class GetConsumptionBetween:
 
         return [
             {
-                "datetime": r.date.isoformat(),
+                "date": r.date.isoformat(),
                 "consumption": r.consumption * 1000000
             } for r in results
         ]

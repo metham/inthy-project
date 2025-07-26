@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
-from ..models.energy import Energy
+from consumption_app.infrastructure.models.energy import Energy
 
 class EnergyRepository(ABC):
     @abstractmethod
