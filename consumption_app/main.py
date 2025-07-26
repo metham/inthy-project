@@ -1,6 +1,6 @@
 from flask import Flask
-from consumption_app.controllers.consumption import consumption_blueprint
-from consumption_app.controllers.home import home_blueprint
+from controllers.consumption import consumption_blueprint
+from controllers.home import home_blueprint
 
 def create_app():
     app = Flask(__name__)

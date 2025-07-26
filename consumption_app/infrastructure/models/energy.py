@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, DateTime
-from infrastructure.db import Base
+from ..db import Base
 
 class EnergyORM(Base):
     __tablename__ = "energy"
