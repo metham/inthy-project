@@ -15,7 +15,7 @@ données, de manière à pouvoir les stocker et les requêter de manière effica
 dans la suite de l’exercice.
     ○​  Écrire une requête SQL qui répond à la question: quelle était la
     consommation moyenne entre le 1er janvier à 6h et le 3 à 17h ?
-    -> `SELECT AVG(consumption) as AVG_CONS_MW FROM energy WHERE date BETWEEN '2025-01-01 06:00:00' AND '2025-01-03 17:00:00';`
+    -> `SELECT AVG(consumption) as AVG_CONS_MW FROM energy WHERE date BETWEEN '01/01/2025 06:00:00' AND '03/01/2025 17:00:00';`
 ●​  Insérer les données dans une base de données locale de votre choix selon le
 schéma choisi à l’aide d’un script python.
 ●​  Créer une API en python qui contiendra un seul endpoint et permettra de
