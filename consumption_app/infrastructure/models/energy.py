@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, DateTime
 from ..db import Base
 
-class EnergyORM(Base):
+class Energy(Base):
     __tablename__ = "energy"
 
     id = Column(Integer, primary_key=True, index=True)

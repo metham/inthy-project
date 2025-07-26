@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime
-from usecases.get_consumption import get_consumption_between
+from usecases.get_consumption_between import GetConsumptionBetween
+from infrastructure.repositories.sql_alch_energy_repository import SqlAlchemyEnergyRepository
+
 
 consumption_blueprint = Blueprint("consumption", __name__, url_prefix='/consumption')
 
@@ -12,20 +14,22 @@ def consumption():
         return jsonify({"message": "start and end paramters are required"}), 400
 
     try:
-        start = datetime.strptime(f"{start}", "%Y-%m-%dT%H:%M")
+        start = datetime.fromisoformat(start)
     except ValueError as e:
-        return jsonify({"message": "start needs to be formated that way YYYY-MM-DDTHH:MM"}), 400
+        return jsonify({"message": "start needs to be in the ISO format"}), 400
 
     try:
-        end = datetime.strptime(f"{end}", "%Y-%m-%dT%H:%M")
+        end = datetime.fromisoformat(end)
     except ValueError as e:
-        return jsonify({"message": "end needs to be formated that way YYYY-MM-DDTHH:MM"}), 400
+        return jsonify({"message": "end needs to be in the ISO format"}), 400
 
-    if start > end:
-        return jsonify({"message": "start needs to be a more recent date than end"}), 400
+    repo = SqlAlchemyEnergyRepository()
+    get_between = GetConsumptionBetween(repository=repo)
 
     try: 
-        result = get_consumption_between(start, end)
+        result = get_between.execute(start, end)
         return jsonify(result), 200
+    except ValueError as ve:
+        return jsonify({"message": str(ve)}), 400   
     except Exception as e: 
         return jsonify({"error": str(e)}), 500

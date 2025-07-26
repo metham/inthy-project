@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 from consumption_app.infrastructure.db import SessionLocal
-from consumption_app.infrastructure.models.energy import EnergyORM
+from consumption_app.infrastructure.models.energy import Energy
 
 def parse_datetime(date: str, hour: str) -> str:
     """ Formating date and hour to insert in db """
@@ -35,7 +35,7 @@ def import_csv(filepath: str):
             consumption = float(row["Consommation"])
         except (ValueError, TypeError):
             continue
-        ener = EnergyORM(date=dt, consumption= consumption)
+        ener = Energy(date=dt, consumption= consumption)
         session.add(ener)
         inserted += 1
     try:
